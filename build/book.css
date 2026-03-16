@@ -1,0 +1,586 @@
+/* The Builder's Bible — Book CSS for WeasyPrint PDF Generation */
+
+/* === Page Setup === */
+@page {
+  size: 7.5in 9.25in;  /* Trade paperback size */
+  margin: 1in 0.85in 1in 0.85in;
+
+  @bottom-center {
+    content: counter(page);
+    font-family: 'Inter', 'Helvetica Neue', sans-serif;
+    font-size: 9pt;
+    color: #666;
+  }
+}
+
+@page :first {
+  @bottom-center { content: none; }
+}
+
+@page :blank {
+  @bottom-center { content: none; }
+}
+
+/* Chapter pages start on right (odd) pages */
+@page chapter-first {
+  @bottom-center { content: none; }
+  margin-top: 2in;
+}
+
+/* === Base Typography === */
+:root {
+  --color-text: #1a1a1a;
+  --color-text-secondary: #4a4a4a;
+  --color-accent: #2563eb;
+  --color-accent-dark: #1d4ed8;
+  --color-bg-code: #f5f5f5;
+  --color-bg-callout: #f0f7ff;
+  --color-bg-exercise: #f0fdf4;
+  --color-bg-aria: #fefce8;
+  --color-border: #e5e5e5;
+  --color-border-accent: #93c5fd;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: 11pt;
+  line-height: 1.65;
+  color: var(--color-text);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* === Headings === */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  color: var(--color-text);
+  line-height: 1.25;
+  page-break-after: avoid;
+}
+
+/* Part titles */
+h1.part-title {
+  font-size: 36pt;
+  font-weight: 800;
+  text-align: center;
+  margin-top: 3in;
+  margin-bottom: 0.5in;
+}
+
+h1.part-subtitle {
+  font-size: 16pt;
+  font-weight: 400;
+  text-align: center;
+  color: var(--color-text-secondary);
+  margin-top: 0;
+}
+
+/* Chapter titles */
+h1.chapter-title {
+  font-size: 28pt;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 0.3in;
+  padding-bottom: 0.15in;
+  border-bottom: 3px solid var(--color-accent);
+}
+
+.chapter-number {
+  display: block;
+  font-size: 14pt;
+  font-weight: 600;
+  color: var(--color-accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.1in;
+}
+
+h2 {
+  font-size: 18pt;
+  font-weight: 700;
+  margin-top: 0.4in;
+  margin-bottom: 0.15in;
+  color: var(--color-text);
+}
+
+h3 {
+  font-size: 14pt;
+  font-weight: 600;
+  margin-top: 0.3in;
+  margin-bottom: 0.1in;
+}
+
+h4 {
+  font-size: 12pt;
+  font-weight: 600;
+  margin-top: 0.2in;
+  margin-bottom: 0.08in;
+}
+
+/* === Paragraphs === */
+p {
+  margin-top: 0;
+  margin-bottom: 0.12in;
+  text-align: left;
+  orphans: 3;
+  widows: 3;
+}
+
+/* No text-indent — cleaner look for a technical book */
+
+/* === Lists === */
+ul, ol {
+  margin-top: 0.08in;
+  margin-bottom: 0.12in;
+  padding-left: 0.3in;
+}
+
+li {
+  margin-bottom: 0.04in;
+  line-height: 1.55;
+}
+
+li > p {
+  margin-bottom: 0.04in;
+  text-indent: 0;
+}
+
+/* === Code === */
+code {
+  font-family: 'JetBrains Mono', 'Fira Code', 'Menlo', monospace;
+  font-size: 9.5pt;
+  background-color: var(--color-bg-code);
+  padding: 1pt 3pt;
+  border-radius: 3pt;
+  color: #d63384;
+}
+
+pre {
+  background-color: #1e1e1e;
+  color: #d4d4d4;
+  padding: 0.15in 0.2in;
+  border-radius: 6pt;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Menlo', monospace;
+  font-size: 9pt;
+  line-height: 1.5;
+  overflow-x: auto;
+  margin-top: 0.1in;
+  margin-bottom: 0.15in;
+  page-break-inside: avoid;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+}
+
+/* Code comments in lighter color */
+.code-comment {
+  color: #6a9955;
+  font-style: italic;
+}
+
+/* === ARIA Pattern Boxes === */
+.aria-box {
+  background-color: var(--color-bg-aria);
+  border-left: 4px solid #eab308;
+  padding: 0.15in 0.2in;
+  margin: 0.15in 0;
+  border-radius: 0 6pt 6pt 0;
+  page-break-inside: avoid;
+}
+
+.aria-box .aria-label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 10pt;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #854d0e;
+  margin-bottom: 0.05in;
+}
+
+.aria-analogy {
+  border-left-color: #f59e0b;
+  background-color: #fffbeb;
+}
+
+.aria-reallife {
+  border-left-color: #3b82f6;
+  background-color: #eff6ff;
+}
+
+.aria-intuition {
+  border-left-color: #8b5cf6;
+  background-color: #f5f3ff;
+}
+
+.aria-reallife .aria-label { color: #1e40af; }
+.aria-intuition .aria-label { color: #5b21b6; }
+
+/* === Callout Boxes === */
+.callout {
+  background-color: var(--color-bg-callout);
+  border-left: 4px solid var(--color-accent);
+  padding: 0.12in 0.18in;
+  margin: 0.12in 0;
+  border-radius: 0 6pt 6pt 0;
+  page-break-inside: avoid;
+}
+
+.callout-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 10pt;
+  color: var(--color-accent-dark);
+  margin-bottom: 0.04in;
+}
+
+.callout p {
+  text-indent: 0;
+  margin-bottom: 0.04in;
+}
+
+/* === Exercise Boxes === */
+.exercise {
+  background-color: var(--color-bg-exercise);
+  border: 1.5px solid #86efac;
+  padding: 0.15in 0.2in;
+  margin: 0.15in 0;
+  border-radius: 6pt;
+  page-break-inside: avoid;
+}
+
+.exercise-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 11pt;
+  color: #166534;
+  margin-bottom: 0.06in;
+}
+
+/* === Tables === */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.12in 0;
+  font-size: 10pt;
+  page-break-inside: avoid;
+}
+
+thead {
+  background-color: #f8fafc;
+}
+
+th {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  text-align: left;
+  padding: 0.06in 0.1in;
+  border-bottom: 2px solid var(--color-border);
+}
+
+td {
+  padding: 0.06in 0.1in;
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: top;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+/* === Blockquotes === */
+blockquote {
+  border-left: 3px solid var(--color-border);
+  padding-left: 0.2in;
+  margin: 0.12in 0;
+  color: var(--color-text-secondary);
+  font-style: italic;
+}
+
+blockquote p {
+  text-indent: 0;
+}
+
+/* === Footnotes / Endnotes === */
+.endnotes {
+  margin-top: 0.3in;
+  padding-top: 0.1in;
+  border-top: 1px solid var(--color-border);
+  font-size: 9pt;
+}
+
+.endnote-ref {
+  font-size: 8pt;
+  vertical-align: super;
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+/* === Images / Figures === */
+figure {
+  margin: 0.15in 0;
+  text-align: center;
+  page-break-inside: avoid;
+}
+
+figure img {
+  max-width: 100%;
+  border-radius: 4pt;
+}
+
+figcaption {
+  font-family: 'Inter', sans-serif;
+  font-size: 9pt;
+  color: var(--color-text-secondary);
+  margin-top: 0.06in;
+  font-style: italic;
+}
+
+/* === Book Cover === */
+@page cover-page {
+  margin: 0;
+  @bottom-center { content: none; }
+}
+
+.book-cover {
+  page: cover-page;
+  break-before: right;
+  width: 7.5in;
+  height: 9.25in;
+  background: linear-gradient(160deg, #0a0a0a 0%, #0f172a 40%, #1e1b4b 70%, #312e81 100%);
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8in 0.6in;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle geometric accent lines */
+.book-cover::before {
+  content: "";
+  position: absolute;
+  top: 0.4in;
+  left: 0.4in;
+  right: 0.4in;
+  bottom: 0.4in;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 4pt;
+}
+
+.book-cover::after {
+  content: "";
+  position: absolute;
+  top: 1.2in;
+  right: -0.5in;
+  width: 3in;
+  height: 3in;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.cover-badge {
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-size: 8pt;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 0.6in;
+  padding: 0.05in 0.2in;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 2pt;
+}
+
+.cover-title {
+  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 54pt;
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: white;
+  margin-bottom: 0.3in;
+  text-transform: uppercase;
+}
+
+.cover-rule {
+  width: 1.5in;
+  height: 3px;
+  background: linear-gradient(90deg, #818cf8, #6366f1, #818cf8);
+  margin: 0 auto 0.35in auto;
+  border-radius: 2px;
+}
+
+.cover-subtitle {
+  font-family: 'Georgia', serif;
+  font-size: 16pt;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 0.4in;
+  max-width: 4.5in;
+}
+
+.cover-description {
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-size: 9pt;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.45);
+  margin-bottom: 0.8in;
+}
+
+.cover-authors {
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-size: 15pt;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 0.15in;
+}
+
+.cover-edition {
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-size: 10pt;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* === Legacy title-page (kept for compatibility) === */
+.title-page {
+  text-align: center;
+  page: chapter-first;
+  break-before: right;
+}
+
+.title-page h1 {
+  font-size: 48pt;
+  font-weight: 800;
+  margin-top: 2in;
+  border: none;
+  padding: 0;
+}
+
+.title-page .subtitle {
+  font-size: 18pt;
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  margin-top: 0.3in;
+}
+
+.title-page .authors {
+  font-size: 16pt;
+  font-weight: 500;
+  margin-top: 0.8in;
+}
+
+.title-page .edition {
+  font-size: 11pt;
+  color: var(--color-text-secondary);
+  margin-top: 1.5in;
+}
+
+/* === Horizontal Rules === */
+hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 0.2in 0;
+}
+
+/* === Links === */
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+/* === Table of Contents Links === */
+/* TOC entries show page numbers and dotted leaders in PDF */
+#table-of-contents a[href^="#"] {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+#table-of-contents a[href^="#"]::after {
+  content: leader(dotted) " " target-counter(attr(href), page);
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-secondary);
+}
+
+#table-of-contents li {
+  list-style: none;
+  margin-bottom: 0.06in;
+}
+
+#table-of-contents ul {
+  padding-left: 0;
+}
+
+/* === Emphasis === */
+strong {
+  font-weight: 700;
+}
+
+em {
+  font-style: italic;
+}
+
+/* === Page Breaks === */
+.page-break {
+  break-before: page;
+}
+
+.avoid-break {
+  page-break-inside: avoid;
+}
+
+/* Every chapter/section starts on a new page */
+section[id] {
+  break-before: page;
+}
+
+/* Exception: title page and copyright don't need forced breaks (cover handles it) */
+section#title-page {
+  break-before: auto;
+}
+
+section#copyright {
+  break-before: page;
+}
+
+/* === Milestone Project Header === */
+.milestone-project {
+  background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
+  color: white;
+  padding: 0.25in 0.3in;
+  border-radius: 8pt;
+  margin: 0.2in 0;
+  page-break-inside: avoid;
+}
+
+.milestone-project h2 {
+  color: white;
+  margin-top: 0;
+  font-size: 20pt;
+}
+
+.milestone-project p {
+  color: #dbeafe;
+  text-indent: 0;
+}
+
+/* === Print Optimizations === */
+@media print {
+  body { font-size: 11pt; }
+  pre { font-size: 8.5pt; }
+  .no-print { display: none; }
+}

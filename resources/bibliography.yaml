@@ -1,0 +1,176 @@
+# The Builder's Bible — Bibliography
+# Format: key → { author, title, type, url, date, description }
+
+# === Books ===
+kleppmann-ddia:
+  author: "Martin Kleppmann"
+  title: "Designing Data-Intensive Applications"
+  type: book
+  publisher: "O'Reilly Media"
+  date: "2017"
+  description: "The definitive guide to distributed systems and data architecture"
+
+chip-huyen-ai-eng:
+  author: "Chip Huyen"
+  title: "AI Engineering"
+  type: book
+  publisher: "O'Reilly Media"
+  date: "2025"
+  description: "Production patterns for building AI-powered applications"
+
+raschka-build-llm:
+  author: "Sebastian Raschka"
+  title: "Build a Large Language Model (From Scratch)"
+  type: book
+  publisher: "Manning"
+  date: "2024"
+  description: "Step-by-step guide to building and understanding LLMs"
+
+osmani-vibe-coding:
+  author: "Addy Osmani"
+  title: "Vibe Coding: The Future of Programming"
+  type: book
+  publisher: "O'Reilly Media"
+  date: "2025"
+  description: "Comprehensive guide to AI-assisted software development"
+
+xu-system-design:
+  author: "Alex Xu"
+  title: "System Design Interview"
+  type: book
+  publisher: "Byte Code LLC"
+  date: "2022"
+  description: "Practical system design patterns and interview preparation"
+
+# === Papers & Research ===
+vaswani-attention:
+  author: "Vaswani et al."
+  title: "Attention Is All You Need"
+  type: paper
+  venue: "NeurIPS 2017"
+  date: "2017"
+  description: "The paper that introduced the transformer architecture"
+
+yao-react:
+  author: "Shunyu Yao et al."
+  title: "ReAct: Synergizing Reasoning and Acting in Language Models"
+  type: paper
+  venue: "ICLR 2023"
+  date: "2023"
+  description: "The Reason-Act pattern for AI agents"
+
+wei-chain-of-thought:
+  author: "Jason Wei et al."
+  title: "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models"
+  type: paper
+  venue: "NeurIPS 2022"
+  date: "2022"
+  description: "Showed that asking models to think step-by-step dramatically improves performance"
+
+zaharia-compound-ai:
+  author: "Matei Zaharia et al. (BAIR)"
+  title: "The Shift from Models to Compound AI Systems"
+  type: blog
+  date: "2024"
+  description: "State-of-the-art AI results increasingly come from compound systems, not monolithic models"
+
+# === Blog Posts & Articles ===
+eugene-yan-patterns:
+  author: "Eugene Yan"
+  title: "Patterns for Building LLM-based Systems & Products"
+  type: blog
+  date: "2023"
+  description: "Practical patterns for RAG, agents, and LLM system design"
+
+alammar-transformer:
+  author: "Jay Alammar"
+  title: "The Illustrated Transformer"
+  type: blog
+  date: "2018"
+  description: "The most accessible visual explanation of transformer architecture"
+
+weng-attention:
+  author: "Lilian Weng"
+  title: "Attention? Attention!"
+  type: blog
+  date: "2018"
+  description: "Comprehensive survey of attention mechanisms in deep learning"
+
+willison-prompt-injection:
+  author: "Simon Willison"
+  title: "Prompt Injection Attacks Against GPT-3"
+  type: blog
+  date: "2022"
+  description: "First major public documentation of prompt injection as a security threat"
+
+boykis-embeddings:
+  author: "Vicki Boykis"
+  title: "What Are Embeddings?"
+  type: blog
+  date: "2023"
+  description: "The clearest explanation of embeddings for a technical audience"
+
+husain-evals:
+  author: "Hamel Husain"
+  title: "Your AI Product Needs Evals"
+  type: blog
+  date: "2024"
+  description: "Practical framework for evaluating AI systems: vibes → quantitative → automated"
+
+anthropic-building-agents:
+  author: "Anthropic"
+  title: "Building Effective Agents"
+  type: blog
+  date: "2024"
+  description: "Anthropic's official guide to agent architecture patterns"
+
+karpathy-auto-research:
+  author: "Andrej Karpathy"
+  title: "AutoResearch"
+  type: code
+  date: "2026-03"
+  description: "630 lines of Python for autonomous ML research — 100 experiments overnight"
+
+cherny-claude-code:
+  author: "Boris Cherny"
+  title: "10 Claude Code Principles"
+  type: blog
+  date: "2025"
+  description: "Best practices from the Anthropic engineer who built Claude Code"
+
+# === Lectures & Videos ===
+karpathy-build-gpt:
+  author: "Andrej Karpathy"
+  title: "Let's Build GPT: from scratch, in code, spelled out"
+  type: video
+  date: "2023"
+  description: "Building a transformer from scratch with clear explanations"
+
+3b1b-neural-nets:
+  author: "3Blue1Brown (Grant Sanderson)"
+  title: "Neural Networks"
+  type: video
+  date: "2017"
+  description: "The most visually intuitive introduction to neural networks"
+
+# === Tools & Documentation ===
+mcp-spec:
+  author: "Anthropic"
+  title: "Model Context Protocol Specification"
+  type: documentation
+  date: "2024-2026"
+  description: "The standard protocol for connecting AI models to tools and data sources"
+
+owasp-top-10:
+  author: "OWASP Foundation"
+  title: "OWASP Top 10"
+  type: documentation
+  date: "2021"
+  description: "The ten most critical web application security risks"
+
+google-sre:
+  author: "Google"
+  title: "Site Reliability Engineering"
+  type: book
+  date: "2016"
+  description: "Google's approach to production operations, freely available online"
